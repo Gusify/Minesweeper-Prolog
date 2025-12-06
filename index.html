@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minesweeper · Prolog</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">SWI-Prolog + ASP</p>
+        <h1>Minesweeper reasoning demo</h1>
+        <p class="subhead">Static board from the assignment, live hints from Prolog predicates.</p>
+      </div>
+      <div class="hero-actions">
+        <button id="reset" class="ghost">Reset board</button>
+        <button id="refresh" class="ghost">Reload state</button>
+        <a class="ghost" href="https://www.swi-prolog.org/pldoc/doc_for?object=section%282.15%29" target="_blank" rel="noreferrer">HTTP docs ↗</a>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Board</h2>
+          <div id="board-size" class="meta"></div>
+        </div>
+        <div id="board" class="board"></div>
+        <div class="legend">
+          <span class="chip open">Opened</span>
+          <span class="chip flag">Flag</span>
+          <span class="chip safe">Safe hint</span>
+          <span class="chip must">Must-flag hint</span>
+          <span class="chip mine">Mine (revealed for demo)</span>
+        </div>
+      </section>
+
+      <aside class="panel side">
+        <div class="panel-header">
+          <h2>Derived moves</h2>
+        </div>
+        <div class="list">
+          <p class="list-title">Safe cells</p>
+          <div id="safe-moves" class="chips"></div>
+          <p class="list-title">Forced mines</p>
+          <div id="must-flag" class="chips"></div>
+          <p class="list-title">Flood fill from (1,1)</p>
+          <div id="flood" class="chips"></div>
+        </div>
+        <div class="panel-footer">
+          <p>Data comes from <code>state_handler/1</code> in <code>web_server.pl</code>, reusing predicates in <code>minesweeper.pl</code>.</p>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
