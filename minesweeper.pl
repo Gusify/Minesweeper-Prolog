@@ -59,7 +59,6 @@ neighbor(X, Y, NX, NY) :-
     offset(DX, DY),
     NX is X + DX,
     NY is Y + DY,
-    (DX =\= 0 ; DY =\= 0),
     within(NX, NY).
 
 % Knowledge about bombs and counts.
