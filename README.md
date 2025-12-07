@@ -36,6 +36,10 @@ true.
 ```
 Run the bundled demo non-interactively: `swipl -s minesweeper.pl -g sample_queries -t halt`.
 
+### Dependencies / installs
+- SWI-Prolog: macOS (Homebrew) `brew install swi-prolog`; Windows via winget `winget install SWI-Prolog.SWI-Prolog`; Debian/Ubuntu `sudo apt-get install swi-prolog`.
+- Clingo (ASP): macOS `brew install clingo`; Windows `winget install Potassco.Clingo`; Linux packages often `clingo` or `potassco-clingo` (e.g., `sudo apt-get install clingo`). Verify with `clingo --version`.
+
 ### Web UI (Prolog HTTP server)
 Launch a tiny HTTP server and open the GUI:
 - Simple one-liner (blocks):  
@@ -58,6 +62,11 @@ Sample run (shows all optimal layouts):
 clingo minesweeper.lp --opt-mode=optN 0
 ```
 Expect several optimal answer sets with two mines each; the printed `mine(X,Y)` atoms identify each valid placement.
+
+Troubleshooting (Windows):
+- Ensure clingo is installed and on PATH: `clingo --version` should work. Install via `winget install Potassco.Clingo`.
+- Run from the repo root so the file path resolves: `clingo minesweeper.lp --opt-mode=optN 0`.
+- If you see a parsing error, double-check the command uses the `.lp` file directly (not piping from an empty stdin) and that the file wasn’t edited with smart quotes or other characters. The provided file is plain ASCII.
 
 ## Comparison
 - Prolog version works from a concrete board plus player knowledge to derive safe moves and recursive flood fills; it mirrors interactive play.
