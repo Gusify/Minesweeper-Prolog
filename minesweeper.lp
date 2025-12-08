@@ -11,10 +11,10 @@ dy(-1;0;1).
 neighbor(X,Y,NX,NY) :-
     cell(X,Y),
     dx(DX), dy(DY),
-    (DX != 0; DY != 0),
+    (DX, DY) != (0, 0),
     NX = X + DX, NY = Y + DY,
-    NX >= 1, NX =< w,
-    NY >= 1, NY =< h,
+    NX >= 1, NX <= w,
+    NY >= 1, NY <= h,
     cell(NX,NY).
 
 % Opened clues from a partial Minesweeper game.

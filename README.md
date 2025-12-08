@@ -45,11 +45,14 @@ Launch a tiny HTTP server and open the GUI:
 - Simple one-liner (blocks):  
   `swipl -g 'asserta(server_port(3000)),[web_server],start_server,thread_get_message(stop).'`
   (Feel free to change 3000.)
-- Interactive: `swipl -s web_server.pl`, then at the prompt: `?- start_server.`
+- Interactive: `swipl -s web_server.pl`, then at the prompt type `start_server.` (do **not** prepend `?-`; the prompt already shows it).
 - Open http://localhost:3000
 
 The page shows the fixed board, opened/flagged cells, safe/must-flag hints, and the flood fill, all computed from `minesweeper.pl` and exposed via `/state`.
 - Interactions: left-click to open a cell, right-click/middle-click to toggle a flag, “Reset board” button to restore the initial state.
+
+Troubleshooting:
+- Error `Unknown procedure: (?-)/1` means an extra `?-` was typed; just enter `start_server.` at the prompt shown by SWI-Prolog.
 
 ## Part 2 – ASP (minesweeper.lp)
 - Domain: 4x4 grid, `clue/3` facts represent opened numbers at (1,1)=0, (2,3)=2, (3,4)=1.
